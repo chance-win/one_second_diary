@@ -205,5 +205,7 @@ const Map<String, String> id = {
       'Ketika diaktifkan, memilih tanggal sebelumnya akan memfilter video berdasarkan tanggal tersebut. Ketika dinonaktifkan, semua video akan ditampilkan. Hanya bekerja dengan pemilih file eksperimental.',
   'useAlternativeCalendarColors': 'Gunakan warna kalender alternatif',
   'useAlternativeCalendarColorsDescription':
-      'Mengubah hijau dan merah di kalender menjadi biru dan kuning. Berguna untuk orang buta warna.'
+      'Mengubah hijau dan merah di kalender menjadi biru dan kuning. Berguna untuk orang buta warna.',
+  'useClipPad': 'Usa il margine temporale finale',
+  'useClipPadDescription': 'Aggiunge 500 ms extra alla fine dei nuovi clip se il clip dura meno di 1,5 secondi. Utile per transizioni migliori. Influisce solo sui nuovi clip.'
 };

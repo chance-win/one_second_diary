@@ -179,5 +179,7 @@ const Map<String, String> zh = {
   'useFilterInExperimentalPicker': '使用日期过滤器选择视频',
   'useFilterInExperimentalPickerDescription': '启用后，选择过去的日期将按该日期过滤视频。禁用后，将显示所有视频。仅适用于实验性文件选择器。',
   'useAlternativeCalendarColors': '使用备用日历颜色',
-  'useAlternativeCalendarColorsDescription': '将日历中的绿色和红色更改为蓝色和黄色。对色盲者有用。'
+  'useAlternativeCalendarColorsDescription': '将日历中的绿色和红色更改为蓝色和黄色。对色盲者有用。',
+  'useClipPad': '使用结束时间缓冲',
+  'useClipPadDescription': '如果剪辑少于1.5秒，在新剪辑的末尾添加额外的500毫秒时间。对改善过渡效果有帮助。仅影响新剪辑。'
 };

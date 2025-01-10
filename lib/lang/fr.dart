@@ -210,5 +210,7 @@ const Map<String, String> fr = {
       'Lorsqu\'il est activé, sélectionner des dates passées filtrera les vidéos par cette date. Lorsqu\'il est désactivé, toutes les vidéos seront affichées. Fonctionne uniquement avec le sélecteur de fichiers expérimental.',
   'useAlternativeCalendarColors': 'Utilisez des couleurs de calendrier alternatives',
   'useAlternativeCalendarColorsDescription':
-      'Change le vert et le rouge dans le calendrier en bleu et jaune. Utile pour les personnes daltoniennes.'
+      'Change le vert et le rouge dans le calendrier en bleu et jaune. Utile pour les personnes daltoniennes.',
+  'useClipPad': 'Utiliser un temps additionnel',
+  'useClipPadDescription': 'Ajoute 500 ms supplémentaires à la fin des nouveaux clips si le clip dure moins de 1,5 seconde. Utile pour de meilleures transitions. Affecte uniquement les nouveaux clips.'
 };

@@ -208,5 +208,7 @@ const Map<String, String> es = {
       'Cuando está activado, seleccionar fechas pasadas filtrará los vídeos por esa fecha. Si está desactivado, se mostrarán todos los vídeos. Funciona solo con el selector de archivos experimental.',
   'useAlternativeCalendarColors': 'Use colores alternativos para el calendario',
   'useAlternativeCalendarColorsDescription':
-      'Cambia el verde y el rojo en el calendario a azul y amarillo. Útil para personas con daltonismo.'
+      'Cambia el verde y el rojo en el calendario a azul y amarillo. Útil para personas con daltonismo.',
+  'useClipPad': 'Usar tiempo adicional al final',
+  'useClipPadDescription': 'Añade 500 ms extra al final de los clips nuevos si el clip dura menos de 1,5 segundos. Útil para mejores transiciones. Solo afecta a clips nuevos.'
 };
