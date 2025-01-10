@@ -1039,18 +1039,9 @@ class _SaveVideoPageState extends State<SaveVideoPage> {
     final double clipDuration = _videoEndValue - _videoStartValue;
     final int videoDuration = _trimmer.videoPlayerController!.value.duration.inMilliseconds;
 
-    Utils.logInfo(
-      'End is $defaultEnd, video duration is $clipDuration and settings is $isClipPad',
-    );
-
     if (clipDuration < 1500 && isClipPad) {
-      Utils.logInfo('Entering condition');
       defaultEnd += 500;
     }
-
-    Utils.logInfo(
-      'Now end is $defaultEnd and video duration is $videoDuration',
-    );
 
     if (defaultEnd > videoDuration) {
       return videoDuration.toDouble();
