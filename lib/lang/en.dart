@@ -209,4 +209,7 @@ const Map<String, String> en = {
   'useAlternativeCalendarColors': 'Use alternative calendar colors',
   'useAlternativeCalendarColorsDescription':
       'Changes green and red in calendar to blue and yellow. Useful for colorblind people.',
+  'useClipPad': 'Use end clip time padding',
+  'useClipPadDescription':
+      'Add an extra 500 ms time at the end of new clips if the clip is less than 1.5 seconds. Useful for better transitions. Only affect new clips.',
 };
