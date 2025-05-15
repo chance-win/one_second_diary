@@ -29,7 +29,7 @@ const Map<String, String> es = {
   'no': 'No',
   'edit': 'Editar',
   'emojiHappy': '¡Asombroso!\nNos vemos mañana.',
-  'emojiSad': 'Esperando por\ntu grabación ...',
+  'emojiSad': 'Esperando por\ntu grabación…',
   'rotateDevice': 'Gira tu dispositivo hacia la izquierda.',
   'recordingErrorTitle': 'Ha ocurrido un error al grabar el video.',
   'save': 'Guardar',
@@ -37,7 +37,7 @@ const Map<String, String> es = {
   'videoSavedTitle': 'Video guardado.',
   'videoSavedDesc': '¡Nos vemos mañana!',
   'editVideoProperties': 'Editar las propiedades del video',
-  'comingSoon': 'Próximamente...',
+  'comingSoon': 'Próximamente…',
   'saveVideo': 'Guardar video',
   'discardVideoTitle': '¿Descartar video grabado?',
   'discardVideoDesc': 'Presiona "Sí" para grabar nuevamente.',
@@ -113,7 +113,7 @@ const Map<String, String> es = {
   'verticalProfileName': 'Perfil vertical',
   'verticalProfileActivated': 'Este perfil sólo contendrá fragmentos verticales',
   'verticalProfileDisabled': 'Este perfil sólo contendrá fragmentos apaisados',
-  'creatingMovie': 'Procesando... Por favor espera.\nEsto puede tomar varios minutos.',
+  'creatingMovie': 'Procesando… Por favor espera.\nEsto puede tomar varios minutos.',
   'doNotCloseTheApp': 'No cierres la aplicación',
   'cancelMovieCreation': 'Cancelar creación de película',
   'cancelMovieDesc': '¿Estás seguro de que quieres cancelar la creación de la película?',
@@ -168,7 +168,7 @@ const Map<String, String> es = {
   'migrationSuccess':
       '¡Migración exitosa! Todos los videos y películas ahora se guardan en Internal Storage > DCIM > OneSecondDiary',
   'migrationInProgress':
-      'Migrando todos tus videos a la nueva carpeta de la aplicación, por favor espera...',
+      'Migrando todos tus videos a la nueva carpeta de la aplicación, por favor espera…',
   'migrationFolderDeletionError':
       'Migración completa, pero ocurrió un error al eliminar las carpetas antiguas. Por favor, elimínelas manualmente.',
   'preferences': 'Preferencias',
@@ -203,7 +203,7 @@ const Map<String, String> es = {
   'feat4v152': 'Bloqueo de orientación',
   'featDesc4v152':
       'Al grabar en la aplicación, toca el nuevo botón después de posicionar tu teléfono para bloquear la orientación y evitar resultados inesperados 📱',
-  'feat5v152': 'Y más...',
+  'feat5v152': 'Y más…',
   'featDesc5v152':
       'También encontrarás algunas pequeñas mejoras visuales y correcciones de errores 🐛',
   'useFilterInExperimentalPicker': 'Use el filtro de fecha para seleccionar vídeos',
