@@ -9,6 +9,7 @@
 - David Coker (@daoxve)
 - Adrasteon (@AdrasteonDev)
 - Philéas (@phileas_imt)
+- Ishan Vaghani (@ishanvaghani)
 
 ## Testing & Feedback
 - Augusto Vesco

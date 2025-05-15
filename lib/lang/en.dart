@@ -216,5 +216,8 @@ const Map<String, String> en = {
   'mixedResolutionAlertDescription':
       'At least one snippet seems to have a different resolution.\n\n'
           'This can cause unexpected results when using your film.\n\n'
-          'Try to delete theses files or move them to a different profile.'
+          'Try to delete theses files or move them to a different profile.',
+  'permissionDenied': 'Permission Denied',
+  'allPermissionDenied': 'You have denied all the requested permissions but these are required to perform the required functionality. Would you like to accept them?',
+  'noThanks': 'No Thanks',
 };
