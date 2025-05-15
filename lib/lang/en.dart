@@ -220,4 +220,7 @@ const Map<String, String> en = {
   'permissionDenied': 'Permission Denied',
   'allPermissionDenied': 'You have denied all the requested permissions but these are required to perform the required functionality. Would you like to accept them?',
   'noThanks': 'No Thanks',
+  'useExtendedQuickCuts': 'Use extended quickcuts',
+  'useExtendedQuickCutsDescription':
+      'Add more duration values for cutting videos. Useful for cutting videos with more precision.',
 };

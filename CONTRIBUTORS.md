@@ -10,6 +10,7 @@
 - Adrasteon (@AdrasteonDev)
 - Philéas (@phileas_imt)
 - Ishan Vaghani (@ishanvaghani)
+- Alberto Salguero (@agsalguero)
 
 ## Testing & Feedback
 - Augusto Vesco
