@@ -17,8 +17,8 @@ jobs:
       - name: Download and setup Flutter
         run: |
           mkdir -p $HOME/flutter
-          wget -q https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.5-stable.tar.xz
-          tar xf flutter_linux_3.19.5-stable.tar.xz -C $HOME
+          wget -q https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.0-stable.tar.xz
+          tar xf flutter_linux_3.24.0-stable.tar.xz -C $HOME
           echo "$HOME/flutter/bin" >> $GITHUB_PATH
         
       - name: Print Flutter/Dart versions
@@ -27,7 +27,7 @@ jobs:
           dart --version
         
       - name: Get Flutter dependencies
-        run: flutter pub get --no-pub-get-pubspec-yaml-validate
+        run: flutter pub get
         
       - name: Build APK
         run: flutter build apk --release
