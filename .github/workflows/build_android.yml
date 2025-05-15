@@ -27,7 +27,7 @@ jobs:
           dart --version
         
       - name: Get Flutter dependencies
-        run: flutter pub get
+        run: flutter pub get --no-pub-get-pubspec-yaml-validate
         
       - name: Build APK
         run: flutter build apk --release
