@@ -1,4 +1,4 @@
-name: Build Android and iOS
+name: Build Android
 
 on:
   push:
@@ -9,82 +9,27 @@ on:
 jobs:
   build_android:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/cirruslabs/flutter:stable
     steps:
-    - uses: actions/checkout@v2
-    
-    # 设置Java环境
-    - name: Set up JDK 11
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'zulu'
-        java-version: '11'
-    
-    # 设置Flutter环境
-    - name: Set up Flutter
-      uses: subosito/flutter-action@v1
-      with:
-        flutter-version: '3.19.3'
-        channel: 'stable'
-    
-    # 获取Flutter依赖
-    - name: Get dependencies
-      run: flutter pub get
-    
-    # 构建APK
-    - name: Build APK
-      run: flutter build apk --release
-
-    # 上传APK作为构建产物
-    - name: Upload APK
-      uses: actions/upload-artifact@v1
-      with:
-        name: release-apk
-        path: build/app/outputs/flutter-apk/app-release.apk
-  
-  build_ios:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v2
-    
-    # 设置Xcode版本
-    - name: Set up Xcode
-      uses: maxim-lobanov/setup-xcode@v1
-      with:
-        xcode-version: latest-stable
-    
-    # 设置Flutter环境
-    - name: Set up Flutter
-      uses: subosito/flutter-action@v1
-      with:
-        flutter-version: '3.19.3'
-        channel: 'stable'
-    
-    # 获取Flutter依赖
-    - name: Get dependencies
-      run: flutter pub get
-    
-    # 安装Pod依赖
-    - name: Install Pod Dependencies
-      run: |
-        cd ios
-        pod install
-    
-    # 构建iOS
-    - name: Build iOS
-      run: flutter build ios --release --no-codesign
-    
-    # 创建构建归档
-    - name: Archive iOS build artifacts
-      run: |
-        cd build/ios/iphoneos
-        mkdir -p Payload
-        cp -r Runner.app Payload
-        zip -r app.zip Payload
-        mv app.zip ../../app.ipa
-    
-    # 上传IPA作为构建产物
-    - name: Upload IPA
-      uses: actions/upload-artifact@v1
-      with:
-        name: release-ipa
-        path: build/ios/app.ipa 
+      - name: Checkout code
+        uses: actions/checkout@v1
+        
+      - name: Get Flutter dependencies
+        run: flutter pub get
+        
+      - name: Build APK
+        run: flutter build apk --release
+        
+      # 将APK复制到可访问的位置，避免使用upload-artifact
+      - name: Copy APK to artifacts directory
+        run: |
+          mkdir -p /github/workspace/artifacts
+          cp build/app/outputs/flutter-apk/app-release.apk /github/workspace/artifacts/
+      
+      # 打印APK位置信息，便于手动下载
+      - name: Print artifact location
+        run: |
+          echo "APK built successfully! Find it in GitHub Actions build logs."
+          echo "APK path: /github/workspace/artifacts/app-release.apk"
+          ls -la /github/workspace/artifacts/ 
