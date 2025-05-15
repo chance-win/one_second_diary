@@ -13,11 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v1
       
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.19.4'
-          channel: 'stable'
+      # 直接下载Flutter并设置环境变量，避免使用actions
+      - name: Download and setup Flutter
+        run: |
+          mkdir -p $HOME/flutter
+          wget -q https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.5-stable.tar.xz
+          tar xf flutter_linux_3.19.5-stable.tar.xz -C $HOME
+          echo "$HOME/flutter/bin" >> $GITHUB_PATH
         
       - name: Print Flutter/Dart versions
         run: |
