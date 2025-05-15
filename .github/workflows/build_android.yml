@@ -1,0 +1,42 @@
+name: Build and Release Android App
+
+on:
+  push:
+    branches: [ main ]
+  # 也可以手动触发
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    # 设置Java环境
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'zulu'
+        java-version: '11'
+    
+    # 设置Flutter环境
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.19.3'
+        channel: 'stable'
+    
+    # 获取Flutter依赖
+    - name: Get dependencies
+      run: flutter pub get
+    
+    # 构建APK
+    - name: Build APK
+      run: flutter build apk --release
+
+    # 上传APK作为构建产物
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: release-apk
+        path: build/app/outputs/flutter-apk/app-release.apk 
