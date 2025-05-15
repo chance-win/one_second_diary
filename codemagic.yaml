@@ -24,4 +24,83 @@ workflows:
 
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
-      - build/app/outputs/bundle/release/app-release.aab 
+      - build/app/outputs/bundle/release/app-release.aab
+      
+  ios-workflow:
+    name: iOS Build
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      vars:
+        BUNDLE_ID: "com.kylekun.oneSecondDiary" # 替换为你的Bundle ID
+
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter packages pub get
+      
+      - name: Install CocoaPods dependencies
+        script: |
+          cd ios
+          pod install
+      
+      - name: Build unsigned iOS app
+        script: |
+          flutter build ios --release --no-codesign
+      
+      # 创建基本IPA包 (未签名)
+      - name: Package IPA
+        script: |
+          cd build/ios/iphoneos
+          mkdir -p Payload
+          cp -r Runner.app Payload
+          zip -r app.zip Payload
+          mv app.zip ../../app.ipa
+
+    artifacts:
+      - build/ios/app.ipa
+      - build/ios/iphoneos/Runner.app
+      
+  # 如果你有Apple Developer账号，可以使用以下更完整的iOS工作流
+  # ios-signed-workflow:
+  #   name: iOS Signed Build
+  #   instance_type: mac_mini_m1
+  #   max_build_duration: 60
+  #   environment:
+  #     flutter: stable
+  #     xcode: latest
+  #     cocoapods: default
+  #     groups:
+  #       - app_store_credentials # 你需要在Codemagic UI创建这个变量组
+  #     vars:
+  #       BUNDLE_ID: "com.kylekun.oneSecondDiary"
+  # 
+  #   scripts:
+  #     - name: Get Flutter packages
+  #       script: |
+  #         flutter packages pub get
+  #     
+  #     - name: Install CocoaPods dependencies
+  #       script: |
+  #         cd ios
+  #         pod install
+  #     
+  #     - name: Set up keychain
+  #       script: |
+  #         keychain initialize
+  #     
+  #     - name: Fetch signing files
+  #       script: |
+  #         app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --create
+  #     
+  #     - name: Build signed iOS app
+  #       script: |
+  #         flutter build ipa --export-options-plist=/Users/builder/export_options.plist
+  # 
+  #   artifacts:
+  #     - build/ios/ipa/*.ipa
+  #     - /tmp/xcodebuild_logs/*.log
+  #     - flutter_drive.log 
