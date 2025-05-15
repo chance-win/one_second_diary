@@ -215,4 +215,6 @@ const Map<String, String> es = {
   'useExtendedQuickCuts': 'Usar botones de corte extendidos',
   'useExtendedQuickCutsDescription':
   'Añade más botones de duración para cortar los vídeos. Útil para recortar los vídeos con mayor precisión.',
+  'useClipPad': 'Usar tiempo adicional al final',
+  'useClipPadDescription': 'Añade 500 ms extra al final de los clips nuevos si el clip dura menos de 1,5 segundos. Útil para mejores transiciones. Solo afecta a clips nuevos.'
 };

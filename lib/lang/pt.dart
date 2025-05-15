@@ -208,5 +208,7 @@ const Map<String, String> pt = {
       'Quando ativado, selecionar datas passadas filtrará os vídeos por essa data. Quando desativado, todos os vídeos serão mostrados. Funciona apenas com o seletor de arquivos experimental.',
   'useAlternativeCalendarColors': 'Usar cores alternativas para o calendário',
   'useAlternativeCalendarColorsDescription':
-      'Muda as cores verde e vermelho no calendário para azul e amarelo. Útil para pessoas daltônicas.'
+      'Muda as cores verde e vermelho no calendário para azul e amarelo. Útil para pessoas daltônicas.',
+  'useClipPad': 'Usar tempo adicional no final',
+  'useClipPadDescription': 'Adiciona 500 ms extras ao final de novos clipes se o clipe tiver menos de 1,5 segundos. Útil para melhores transições. Afeta apenas novos clipes.'
 };

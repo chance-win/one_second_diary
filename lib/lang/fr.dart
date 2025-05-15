@@ -185,5 +185,7 @@ const Map<String, String> fr = {
   'mixedResolutionAlert': 'Mix de résolutions détecté.',
   'mixedResolutionAlertDescription': 'Au moins une vidéo semble avoir un mix de résolutions.\n\n'
       'Cela peut produire des résultats innatendus lorsque vous utilisez votre film.\n\n'
-      'Essayez de supprimer ces fichiers ou de les déplacer dans un autre profil.'
+      'Essayez de supprimer ces fichiers ou de les déplacer dans un autre profil.',
+  'useClipPad': 'Utiliser un temps additionnel',
+  'useClipPadDescription': 'Ajoute 500 ms supplémentaires à la fin des nouveaux clips si le clip dure moins de 1,5 seconde. Utile pour de meilleures transitions. Affecte uniquement les nouveaux clips.'
 };

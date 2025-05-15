@@ -208,5 +208,7 @@ const Map<String, String> de = {
       'Wenn aktiviert, filtern die Auswahl vergangener Daten die Videos nach diesem Datum. Wenn deaktiviert, werden alle Videos angezeigt. Funktioniert nur mit dem experimentellen Dateiauswähler.',
   'useAlternativeCalendarColors': 'Alternative Kalenderfarben verwenden',
   'useAlternativeCalendarColorsDescription':
-      'Ändert grün und rot im Kalender zu blau und gelb. Nützlich für farbenblinde Menschen.'
+      'Ändert grün und rot im Kalender zu blau und gelb. Nützlich für farbenblinde Menschen.',
+  'useClipPad': 'Endzeit-Puffer verwenden',
+  'useClipPadDescription': 'Fügt am Ende neuer Clips zusätzliche 500 ms hinzu, wenn der Clip weniger als 1,5 Sekunden dauert. Nützlich für bessere Übergänge. Betrifft nur neue Clips.'
 };

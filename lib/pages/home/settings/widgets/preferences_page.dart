@@ -17,6 +17,7 @@ class _PreferencesPageState extends State<PreferencesPage> {
   late bool isPickerFilterSwitchToggled;
   late bool isColorsSwitchToggled;
   late bool isExtendedQuickCutsSwitchToggled;
+  late bool isClipPadSwitchToggled;
 
   @override
   void initState() {
@@ -26,6 +27,7 @@ class _PreferencesPageState extends State<PreferencesPage> {
     isPickerFilterSwitchToggled = SharedPrefsUtil.getBool('useFilterInExperimentalPicker') ?? true;
     isColorsSwitchToggled = SharedPrefsUtil.getBool('useAlternativeCalendarColors') ?? false;
     isExtendedQuickCutsSwitchToggled = SharedPrefsUtil.getBool('useExtendedQuickCuts') ?? false;
+    isClipPadSwitchToggled = SharedPrefsUtil.getBool('useClipPad') ?? false;
   }
 
   @override
@@ -275,6 +277,50 @@ class _PreferencesPageState extends State<PreferencesPage> {
                 ),
                 const SizedBox(height: 5.0),
                 Text('useExtendedQuickCutsDescription'.tr),
+                const Divider(),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          'useClipPad'.tr,
+                          style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * 0.045,
+                          ),
+                        ),
+                      ),
+                      Switch(
+                        value: isClipPadSwitchToggled,
+                        onChanged: (value) async {
+                          if (value) {
+                            Utils.logInfo(
+                              '[PREFERENCES] - Use millisecond padding end clip was enabled',
+                            );
+
+                            SharedPrefsUtil.putBool('useClipPad', true);
+                          } else {
+                            Utils.logInfo(
+                              '[PREFERENCES] - Use millisecond padding end clip was disabled',
+                            );
+
+                            SharedPrefsUtil.putBool('useClipPad', false);
+                          }
+
+                          /// Update switch value
+                          setState(() {
+                            isClipPadSwitchToggled = !isClipPadSwitchToggled;
+                          });
+                        },
+                        activeTrackColor: AppColors.mainColor.withOpacity(0.4),
+                        activeColor: AppColors.mainColor,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 5.0),
+                Text('useClipPadDescription'.tr),
               ],
             ),
           ),

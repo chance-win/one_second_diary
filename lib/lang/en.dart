@@ -223,4 +223,7 @@ const Map<String, String> en = {
   'useExtendedQuickCuts': 'Use extended quickcuts',
   'useExtendedQuickCutsDescription':
       'Add more duration values for cutting videos. Useful for cutting videos with more precision.',
+  'useClipPad': 'Use end clip time padding',
+  'useClipPadDescription':
+      'Add an extra 500 ms time at the end of new clips if the clip is less than 1.5 seconds. Useful for better transitions. Only affect new clips.',
 };

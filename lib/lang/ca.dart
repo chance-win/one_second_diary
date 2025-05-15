@@ -211,4 +211,6 @@ const Map<String, String> ca = {
   'useAlternativeCalendarColors': 'Fes servir colors del calendari alternatius',
   'useAlternativeCalendarColorsDescription':
       'Canvia el verd i el vermell del calendari per blau i groc. Útil per a persones daltòniques.',
+  'useClipPad': 'Utilitza el temps de marge final',
+  'useClipPadDescription': 'Afegeix 500 ms extres al final dels clips nous si el clip dura menys de 1,5 segons. Útil per a millors transicions. Només afecta clips nous.'
 };

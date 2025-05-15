@@ -1115,8 +1115,15 @@ class _SaveVideoPageState extends State<SaveVideoPage> {
   }
 
   double getVideoEndInMilliseconds() {
-    final double defaultEnd = _videoEndValue;
+    final isClipPad = SharedPrefsUtil.getBool('useClipPad') ?? false;
+    double defaultEnd = _videoEndValue;
+    final double clipDuration = _videoEndValue - _videoStartValue;
     final int videoDuration = _trimmer.videoPlayerController!.value.duration.inMilliseconds;
+
+    if (clipDuration < 1500 && isClipPad) {
+      defaultEnd += 500;
+    }
+
     if (defaultEnd > videoDuration) {
       return videoDuration.toDouble();
     }

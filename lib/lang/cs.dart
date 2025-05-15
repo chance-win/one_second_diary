@@ -207,5 +207,7 @@ const Map<String, String> cs = {
       'Pokud je aktivní, výběr minulých dat filtruje videa podle toho data. Pokud je deaktivováno, zobrazí se všechna videa. Funguje pouze s experimentálním výběrem souborů.',
   'useAlternativeCalendarColors': 'Použijte alternativní barvy kalendáře',
   'useAlternativeCalendarColorsDescription':
-      'Změní zelenou a červenou v kalendáři na modrou a žlutou. Užitečné pro barvoslepé.'
+      'Změní zelenou a červenou v kalendáři na modrou a žlutou. Užitečné pro barvoslepé.',
+  'useClipPad': 'Použít časové odsazení konce',
+  'useClipPadDescription': 'Přidá dalších 500 ms na konec nových klipů, pokud je klip kratší než 1,5 sekundy. Užitečné pro lepší přechody. Ovlivňuje pouze nové klipy.'
 };
