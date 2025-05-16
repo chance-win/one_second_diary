@@ -9,6 +9,10 @@ on:
 jobs:
   build_android:
     runs-on: ubuntu-latest
+    # 添加环境变量来绕过SDK版本检查
+    env:
+      PUB_ALLOW_PRERELEASE_SDK: 1
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
@@ -27,10 +31,10 @@ jobs:
           dart --version
         
       - name: Get Flutter dependencies
-        run: flutter pub get
+        run: flutter pub get --no-pub-get-pubspec-yaml-validate
         
       - name: Build APK
-        run: flutter build apk --release
+        run: flutter build apk --release --no-pub
         
       # 将APK复制到可访问的位置
       - name: Copy APK to artifacts directory

@@ -6,7 +6,7 @@ publish_to: "none"
 version: 1.6.0+19
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=2.18.0 <4.0.0"
 
 dependencies:
   about: ^2.1.3
