@@ -30,8 +30,39 @@ jobs:
           flutter --version
           dart --version
         
-      - name: Get Flutter dependencies
-        run: flutter pub get --no-pub-get-pubspec-yaml-validate
+      - name: Get Flutter dependencies and clone + patch video_trimmer
+        run: |
+          # 先获取依赖（会失败，但会下载大部分包）
+          flutter pub get || true
+          
+          # 查找video_trimmer目录
+          VIDEO_TRIMMER_PATH=$(find $HOME/.pub-cache -name "video_trimmer" -type d | grep -v "packages/video_trimmer" | head -n 1)
+          echo "Found video_trimmer at: $VIDEO_TRIMMER_PATH"
+          
+          if [ -n "$VIDEO_TRIMMER_PATH" ]; then
+            # 修改pubspec.yaml的SDK约束
+            sed -i 's/sdk: .>=3.2.3 <4.0.0./sdk: ">=3.2.1 <4.0.0"/' $VIDEO_TRIMMER_PATH/pubspec.yaml
+            echo "Modified video_trimmer SDK constraint"
+            cat $VIDEO_TRIMMER_PATH/pubspec.yaml | grep "sdk:"
+          else
+            # 如果找不到，则克隆仓库并修改
+            mkdir -p $HOME/patched_packages
+            cd $HOME/patched_packages
+            git clone https://github.com/KyleKun/video_trimmer.git
+            cd video_trimmer
+            sed -i 's/sdk: .>=3.2.3 <4.0.0./sdk: ">=3.2.1 <4.0.0"/' pubspec.yaml
+            echo "Patched cloned video_trimmer SDK constraint"
+            cat pubspec.yaml | grep "sdk:"
+            
+            # 更新pubspec.yaml指向本地修补版本
+            cd $GITHUB_WORKSPACE
+            sed -i "s|url: https://github.com/KyleKun/video_trimmer.git|path: $HOME/patched_packages/video_trimmer|" pubspec.yaml
+            sed -i "s|ref: main||" pubspec.yaml
+            echo "Updated pubspec.yaml to use local patched version"
+          fi
+          
+          # 重新获取依赖
+          flutter pub get --no-pub-get-pubspec-yaml-validate
         
       - name: Build APK
         run: flutter build apk --release --no-pub
