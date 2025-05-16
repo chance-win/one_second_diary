@@ -35,8 +35,45 @@ jobs:
           flutter pub --version
         shell: bash
 
-      - name: Get Flutter dependencies
-        run: flutter pub get
+      - name: Get Flutter dependencies (and patch video_trimmer)
+        run: |
+          # Try to get dependencies. This might fail due to video_trimmer but will download it.
+          flutter pub get || echo "Initial pub get failed as expected, proceeding to patch."
+
+          # Find video_trimmer in .pub-cache
+          # The path will be something like: $HOME/.pub-cache/git/video_trimmer-GIT_HASH
+          VIDEO_TRIMMER_DIR=$(find $HOME/.pub-cache/git -type d -name "video_trimmer-*" | head -n 1)
+
+          if [ -z "$VIDEO_TRIMMER_DIR" ]; then
+            echo "::error::video_trimmer directory not found in .pub-cache after pub get."
+            # As a fallback, try to find it in a common location for direct git dependencies
+            VIDEO_TRIMMER_DIR=$(find $HOME/.pub-cache/hosted/pub.dartlang.org -type d -name "video_trimmer-*" | head -n 1)
+            if [ -z "$VIDEO_TRIMMER_DIR" ]; then # Still not found?
+                 echo "::error::video_trimmer directory still not found after second attempt. Listing .pub-cache/git contents:"
+                 ls -R $HOME/.pub-cache/git
+                 exit 1
+            fi
+          fi
+          echo "Found video_trimmer at: $VIDEO_TRIMMER_DIR"
+
+          if [ -f "$VIDEO_TRIMMER_DIR/pubspec.yaml" ]; then
+            echo "Original video_trimmer pubspec.yaml SDK constraint:"
+            grep 'sdk:' "$VIDEO_TRIMMER_DIR/pubspec.yaml"
+            
+            # Patch the SDK constraint in video_trimmer's pubspec.yaml
+            # sed -i "s/sdk: '>=3.2.3 <4.0.0'/sdk: '>=3.2.1 <4.0.0'/" "$VIDEO_TRIMMER_DIR/pubspec.yaml"
+            # More robust sed: match the line and replace the version part
+            sed -i -E "s/(sdk: ')[^']*/\1>=3.2.1 <4.0.0/" "$VIDEO_TRIMMER_DIR/pubspec.yaml"
+            
+            echo "Patched video_trimmer pubspec.yaml SDK constraint:"
+            grep 'sdk:' "$VIDEO_TRIMMER_DIR/pubspec.yaml"
+          else
+            echo "::error::pubspec.yaml not found in $VIDEO_TRIMMER_DIR"
+            exit 1
+          fi
+
+          # Now, run pub get again. It should succeed.
+          flutter pub get
         shell: bash
         
       - name: Build APK
